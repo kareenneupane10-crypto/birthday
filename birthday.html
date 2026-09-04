@@ -321,6 +321,72 @@
             padding-bottom: 40px;
         }
 
+        /* Secret note */
+
+        .secret-area {
+            text-align: center;
+            margin-top: 60px;
+            padding-bottom: 80px;
+        }
+
+        .secret-teaser {
+            font-family: 'Caveat', cursive;
+            font-size: 25px;
+            color: #d98a9a;
+            margin-bottom: 18px;
+        }
+
+        .secret-button {
+            background: transparent;
+            color: #ddd;
+            border: 1px solid #5e1424;
+            padding: 13px 25px;
+        }
+
+        .secret-button:hover {
+            background: #9d1833;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .secret-note {
+            display: none;
+            max-width: 650px;
+            margin: 30px auto 0;
+            padding: 35px;
+            background: rgba(70, 12, 25, 0.28);
+            border: 1px solid rgba(190, 50, 75, 0.35);
+            border-radius: 18px;
+            text-align: left;
+            animation: noteOpen 0.8s ease;
+        }
+
+        @keyframes noteOpen {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .secret-note-title {
+            font-family: 'Caveat', cursive;
+            font-size: 30px;
+            color: #d98a9a;
+            margin-bottom: 20px;
+        }
+
+        .secret-note p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 21px;
+            line-height: 1.65;
+            color: #dedede;
+            margin-bottom: 20px;
+        }
+
         /* Scrollbar */
 
         #letter::-webkit-scrollbar {
@@ -344,6 +410,14 @@
 
             #letter {
                 padding: 50px 20px;
+            }
+
+            .secret-note {
+                padding: 25px;
+            }
+
+            .secret-note p {
+                font-size: 19px;
             }
         }
     </style>
@@ -578,6 +652,100 @@
 
             </div>
 
+
+            <!-- SECRET NOTE -->
+
+            <div class="secret-area">
+
+                <div class="secret-teaser">
+                    Psst... you missed something 👀
+                </div>
+
+                <button class="secret-button" onclick="openSecret()">
+                    TAP TO OPEN 💌
+                </button>
+
+                <div class="secret-note" id="secretNote">
+
+                    <div class="secret-note-title">
+                        Okayyy... one last thing.
+                    </div>
+
+                    <p>
+                        Babyy, you once asked me,
+                        "How can you see that part of me?"
+                        Well, that's how I see you.
+                        That's how you are.
+                    </p>
+
+                    <p>
+                        You show yourself so tough outside,
+                        but I get the pookie side too.
+                        You grumpy ass. 😭
+                        Stop smiling.
+                        Well... you may.
+                        I love making you smile, you knoww.
+                        Hehehe.
+                    </p>
+
+                    <p>
+                        I know that cutie boy who's always waiting
+                        for a hug, and I know there's so much more
+                        behind that serious face than you let people see.
+                    </p>
+
+                    <p>
+                        And I'll never forget that day you called and
+                        cried so hard because being a 3-Jana account
+                        student meant BNKS might not work out.
+                        After that call ended, I cried so hard too.
+                        I was literally praying that everything would
+                        somehow be normal and that you'd get to study
+                        at BNKS.
+                    </p>
+
+                    <p>
+                        And right now I'm on video call with you,
+                        and ofcc, you're just being you.
+                        Covering your whole face trying to be a gunda maybe. 😭
+                    </p>
+
+                    <p>
+                        This was a surprisee.
+                        You probably thought that was everything,
+                        but nopeee.
+                    </p>
+
+                    <p>
+                        My pookie Yaanu, once again,
+                        happy birthday.
+                        I hope the Aaryan I know keeps hyping,
+                        keeps smiling, keeps being himself,
+                        and keeps becoming the person he wants to be.
+                    </p>
+
+                    <p>
+                        If you ever need to tell me anything,
+                        I'm here. Always.
+                    </p>
+
+                    <p>
+                        I know my Yaanu hides things in his heart sometimes.
+                        I know my sweetie pie wants to be successful.
+                        I know my sweetie pie needs a hug sometimes.
+                        I know my Yaanu cares about his future a lot.
+                        And I know my Yaanu will be successful.
+                    </p>
+
+                    <p>
+                        So yeah...
+                        Happy birthday, Aaryan. 🤍
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
 
     </section>
@@ -600,6 +768,24 @@
             document.getElementById("letter").style.display = "block";
 
             window.scrollTo(0, 0);
+        }
+
+
+        function openSecret() {
+
+            const note = document.getElementById("secretNote");
+            const button = document.querySelector(".secret-button");
+
+            note.style.display = "block";
+            button.style.display = "none";
+
+            setTimeout(() => {
+                note.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }, 100);
+
         }
 
 
