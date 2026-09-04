@@ -24,7 +24,6 @@
             overflow: hidden;
         }
 
-        /* Soft cherry-red glow */
         body::before {
             content: "";
             position: fixed;
@@ -55,6 +54,7 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
+            z-index: 1;
         }
 
         .star {
@@ -237,6 +237,115 @@
             color: #ccc;
             font-size: 15px;
         }
+
+        .go-button {
+            margin-top: 35px;
+            background: #9d1833;
+            color: white;
+            border: 1px solid #9d1833;
+            padding: 15px 32px;
+        }
+
+        .go-button:hover {
+            background: #c12646;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(157, 24, 51, 0.35);
+        }
+
+        /* Letter page */
+
+        #letter {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            background: #090607;
+            overflow-y: auto;
+            padding: 70px 25px;
+        }
+
+        .letter-wrapper {
+            max-width: 780px;
+            margin: auto;
+            animation: letterReveal 1.3s ease;
+        }
+
+        @keyframes letterReveal {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .letter-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .letter-heading-small {
+            font-family: 'Caveat', cursive;
+            color: #d98a9a;
+            font-size: 28px;
+        }
+
+        .letter-heading h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(45px, 7vw, 75px);
+            font-weight: 500;
+            line-height: 0.95;
+            margin-top: 8px;
+        }
+
+        .letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            line-height: 1.65;
+            color: #dedede;
+            text-align: left;
+        }
+
+        .letter p {
+            margin-bottom: 25px;
+        }
+
+        .signature {
+            text-align: right;
+            font-family: 'Caveat', cursive;
+            color: #d98a9a;
+            font-size: 30px;
+            margin-top: 35px;
+            padding-bottom: 40px;
+        }
+
+        /* Scrollbar */
+
+        #letter::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        #letter::-webkit-scrollbar-track {
+            background: #090607;
+        }
+
+        #letter::-webkit-scrollbar-thumb {
+            background: #5e1424;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .letter {
+                font-size: 19px;
+                line-height: 1.6;
+            }
+
+            #letter {
+                padding: 50px 20px;
+            }
+        }
     </style>
 </head>
 
@@ -252,14 +361,19 @@
         <span class="star">✧</span>
     </div>
 
-    <!-- Opening -->
+
+    <!-- PAGE 1: Opening -->
+
     <main class="container" id="opening">
 
         <div class="opening">
 
             <div class="tiny">for someone veryy special and important...</div>
 
-            <h1>Heyy theree,<br><span class="cherry">Yyaannuu.</span></h1>
+            <h1>
+                Heyy theree,<br>
+                <span class="cherry">Yyaannuu.</span>
+            </h1>
 
             <p class="message">
                 Glad you opened itt.<br>
@@ -271,6 +385,7 @@
             </div>
 
             <div class="buttons">
+
                 <button class="yes" onclick="openSurprise()">
                     Yyess, babbyy
                 </button>
@@ -278,6 +393,7 @@
                 <button class="no" onclick="nope()">
                     NOOOOO
                 </button>
+
             </div>
 
         </div>
@@ -285,7 +401,8 @@
     </main>
 
 
-    <!-- Birthday reveal -->
+    <!-- PAGE 2: Birthday -->
+
     <section id="birthday">
 
         <div class="birthday-content">
@@ -304,8 +421,162 @@
             </div>
 
             <p class="birthday-message">
-                 SWEET 16🤍
+                SWEET 16🤍
             </p>
+
+            <button class="go-button" onclick="openLetter()">
+                LET'S GOOOO
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 3: Letter -->
+
+    <section id="letter">
+
+        <div class="letter-wrapper">
+
+            <div class="letter-heading">
+
+                <div class="letter-heading-small">
+                    and now... one little thing from me
+                </div>
+
+                <h2>
+                    For my <span class="cherry">Yanu.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="letter">
+
+                <p>
+                    Happy sweet 16, Yanu.
+                </p>
+
+                <p>
+                    It's been more than three years since we've known each other.
+                    Things have changed, time has changed. You're growing up,
+                    you're being more mature, but that's the key, Yanu —
+                    never change for me.
+                </p>
+
+                <p>
+                    The cutie who always brightens my day has not changed.
+                    I can see you growing up, not just physically; mentally
+                    and emotionally too. With time, with every birthday,
+                    my Yaanu will grow as an adult.
+                </p>
+
+                <p>
+                    No matter where life takes you, remember that I'll always
+                    be there for you. Don't ever let anyone stop you from
+                    being who you are. Be the person you want to be.
+                    Always keep yourself with positive people, ignore the
+                    negative ones, and don't let yourself down because of
+                    any downfalls.
+                </p>
+
+                <p>
+                    Always remember: Hakuna Matata.
+                </p>
+
+                <p>
+                    From that one point that day, when I first held your hand,
+                    to the day when I'm waiting to hold your hand again;
+                    from talking face to face to now text and video calls;
+                    from being your best friend to your sweetheart;
+                    from calling you my Yanu;
+                    from excelling here to different colleges;
+                    from seeing each other every day to waiting all day
+                    to talk to you;
+                    from crying every night and writing my feelings in a diary
+                    to telling you everything every day;
+                    from trying to be distant from you to being afraid
+                    of losing you —
+                </p>
+
+                <p>
+                    From "you are my..." to "you're my boyfriend,"
+                    I'm still crushing on you like day one,
+                    and being with you makes me feel so lucky.
+                </p>
+
+                <p>
+                    And today you may say, "It's just a birthday."
+                    Birthday comes and goes.
+                    No, sweetheart. You're a special one.
+                    You're an important one.
+                    Today's your day, and it's my favorite day.
+                </p>
+
+                <p>
+                    Well, always remember to smile. Don't let people's
+                    opinions affect you. Work hard, study hard, and yeah —
+                    the one day always comes when my baby boy Yanu will
+                    stand in front of the mirror and be a proud man.
+                </p>
+
+                <p>
+                    And of course, I'll be standing right there,
+                    watching you, cheering for you, hyping you,
+                    getting angry sometimes, of course,
+                    but I will always support you.
+                </p>
+
+                <p>
+                    Don't ever give up.
+                </p>
+
+                <p>
+                    And yeah, one more thing:
+                    even if people say, "Oh no, your relationship won't work,"
+                    don't give a fuck about that shit.
+                    We know our stuff. We know who we are.
+                    We know we love each other, and we will always
+                    be there for each other.
+                </p>
+
+                <p>
+                    Sometimes if we're not, we can video call, of course. 😭
+                </p>
+
+                <p>
+                    I love you so much, my Yanu.
+                    Happy birthday.
+                </p>
+
+                <p>
+                    Be healthy, be happy, be you, be my Yanu,
+                    be successful, be chill.
+                </p>
+
+                <p>
+                    Today's day one will turn to one day, yes.
+                    One day, yes.
+                    You can do it.
+                </p>
+
+                <p>
+                    Life will keep lifeing,
+                    Karine will be Karining,
+                    I will be ironing,
+                    people will always be peopling.
+                </p>
+
+                <p>
+                    Our love will be loving.
+                </p>
+
+                <div class="signature">
+                    — Karine 🤍
+                </div>
+
+            </div>
 
         </div>
 
@@ -320,6 +591,17 @@
 
             document.getElementById("birthday").style.display = "flex";
         }
+
+
+        function openLetter() {
+
+            document.getElementById("birthday").style.display = "none";
+
+            document.getElementById("letter").style.display = "block";
+
+            window.scrollTo(0, 0);
+        }
+
 
         function nope() {
 
