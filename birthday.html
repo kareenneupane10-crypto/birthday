@@ -1,1 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>A Little Surprise</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Caveat:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #080607;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Soft cherry-red glow */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #7d1025;
+            filter: blur(150px);
+            opacity: 0.25;
+            top: -180px;
+            left: -150px;
+            border-radius: 50%;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: #7d1025;
+            filter: blur(170px);
+            opacity: 0.18;
+            bottom: -200px;
+            right: -150px;
+            border-radius: 50%;
+        }
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            color: #ffffff;
+            opacity: 0.6;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        .star:nth-child(1) { top: 15%; left: 18%; font-size: 10px; }
+        .star:nth-child(2) { top: 25%; left: 78%; font-size: 7px; animation-delay: 1s; }
+        .star:nth-child(3) { top: 70%; left: 12%; font-size: 8px; animation-delay: 2s; }
+        .star:nth-child(4) { top: 78%; left: 85%; font-size: 11px; animation-delay: 0.5s; }
+        .star:nth-child(5) { top: 45%; left: 92%; font-size: 6px; animation-delay: 1.5s; }
+        .star:nth-child(6) { top: 12%; left: 52%; font-size: 6px; animation-delay: 2.5s; }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.2);
+            }
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .opening {
+            max-width: 700px;
+            animation: appear 1.5s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tiny {
+            font-family: 'Caveat', cursive;
+            font-size: 24px;
+            color: #d98a9a;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(55px, 9vw, 100px);
+            font-weight: 500;
+            line-height: 0.9;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+
+        .message {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #d8d8d8;
+            margin-bottom: 35px;
+        }
+
+        .cherry {
+            color: #b51f3d;
+        }
+
+        .question {
+            font-family: 'Caveat', cursive;
+            font-size: 27px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        button {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 14px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .yes {
+            background: #9d1833;
+            color: white;
+            border: 1px solid #9d1833;
+        }
+
+        .yes:hover {
+            background: #c12646;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(157, 24, 51, 0.35);
+        }
+
+        .no {
+            background: transparent;
+            color: #aaaaaa;
+            border: 1px solid #444;
+        }
+
+        .no:hover {
+            color: white;
+            border-color: #777;
+        }
+
+        /* Birthday reveal */
+
+        #birthday {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            background: #090607;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .birthday-content {
+            animation: reveal 1.5s ease;
+        }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .birthday-small {
+            font-family: 'Caveat', cursive;
+            font-size: 27px;
+            color: #d98a9a;
+        }
+
+        .birthday-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(60px, 10vw, 120px);
+            line-height: 0.85;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+
+        .birthday-date {
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: #c12646;
+            text-transform: uppercase;
+        }
+
+        .birthday-message {
+            margin-top: 25px;
+            color: #ccc;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Tiny stars -->
+    <div class="stars">
+        <span class="star">✦</span>
+        <span class="star">✧</span>
+        <span class="star">✦</span>
+        <span class="star">✧</span>
+        <span class="star">✦</span>
+        <span class="star">✧</span>
+    </div>
+
+    <!-- Opening -->
+    <main class="container" id="opening">
+
+        <div class="opening">
+
+            <div class="tiny">for someone very special...</div>
+
+            <h1>Hey there,<br><span class="cherry">sweetheart.</span></h1>
+
+            <p class="message">
+                Glad you opened this.<br>
+                I kinda prepared a little something for you...
+            </p>
+
+            <div class="question">
+                Wanna open it? 👀
+            </div>
+
+            <div class="buttons">
+                <button class="yes" onclick="openSurprise()">
+                    Yes, let's see it ✦
+                </button>
+
+                <button class="no" onclick="nope()">
+                    Hmm... maybe not
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Birthday reveal -->
+    <section id="birthday">
+
+        <div class="birthday-content">
+
+            <div class="birthday-small">
+                Wollaaaa! ✨
+            </div>
+
+            <div class="birthday-title">
+                HAPPY<br>
+                <span class="cherry">BIRTHDAY.</span>
+            </div>
+
+            <div class="birthday-date">
+                September 8
+            </div>
+
+            <p class="birthday-message">
+                Today is your day. 🤍
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        function openSurprise() {
+
+            document.getElementById("opening").style.display = "none";
+
+            document.getElementById("birthday").style.display = "flex";
+        }
+
+        function nope() {
+
+            alert("Nice try. 😭 You have to open it.");
+        }
+
+    </script>
+
+</body>
+</html>
