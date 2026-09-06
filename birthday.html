@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Caveat:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -63,23 +64,65 @@
             animation: twinkle 3s infinite ease-in-out;
         }
 
-        .star:nth-child(1) { top: 15%; left: 18%; font-size: 10px; }
-        .star:nth-child(2) { top: 25%; left: 78%; font-size: 7px; animation-delay: 1s; }
-        .star:nth-child(3) { top: 70%; left: 12%; font-size: 8px; animation-delay: 2s; }
-        .star:nth-child(4) { top: 78%; left: 85%; font-size: 11px; animation-delay: 0.5s; }
-        .star:nth-child(5) { top: 45%; left: 92%; font-size: 6px; animation-delay: 1.5s; }
-        .star:nth-child(6) { top: 12%; left: 52%; font-size: 6px; animation-delay: 2.5s; }
+        .star:nth-child(1) {
+            top: 15%;
+            left: 18%;
+            font-size: 10px;
+        }
+
+        .star:nth-child(2) {
+            top: 25%;
+            left: 78%;
+            font-size: 7px;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(3) {
+            top: 70%;
+            left: 12%;
+            font-size: 8px;
+            animation-delay: 2s;
+        }
+
+        .star:nth-child(4) {
+            top: 78%;
+            left: 85%;
+            font-size: 11px;
+            animation-delay: 0.5s;
+        }
+
+        .star:nth-child(5) {
+            top: 45%;
+            left: 92%;
+            font-size: 6px;
+            animation-delay: 1.5s;
+        }
+
+        .star:nth-child(6) {
+            top: 12%;
+            left: 52%;
+            font-size: 6px;
+            animation-delay: 2.5s;
+        }
 
         @keyframes twinkle {
+
             0%, 100% {
                 opacity: 0.2;
                 transform: scale(0.8);
             }
+
             50% {
                 opacity: 0.9;
                 transform: scale(1.2);
             }
+
         }
+
+
+        /* =========================
+           OPENING
+           ========================= */
 
         .container {
             min-height: 100vh;
@@ -98,14 +141,17 @@
         }
 
         @keyframes appear {
+
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         .tiny {
@@ -213,14 +259,17 @@
         }
 
         @keyframes birthdayPhotosIn {
+
             from {
                 opacity: 0;
                 transform: translateX(-40px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
             }
+
         }
 
         .birthday-photo {
@@ -245,14 +294,17 @@
         }
 
         @keyframes birthdayPhotoReveal {
+
             from {
                 opacity: 0;
                 transform: translateY(25px) scale(0.92);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
+
         }
 
         .birthday-photo:hover {
@@ -323,14 +375,17 @@
         }
 
         @keyframes birthdayTextReveal {
+
             from {
                 opacity: 0;
                 transform: translateY(25px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         .go-button:hover {
@@ -361,14 +416,17 @@
         }
 
         @keyframes letterReveal {
+
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         .letter-heading {
@@ -411,6 +469,11 @@
             padding-bottom: 40px;
         }
 
+
+        /* =========================
+           SECRET NOTE AREA
+           ========================= */
+
         .secret-area {
             text-align: center;
             margin-top: 60px;
@@ -437,6 +500,93 @@
             transform: translateY(-3px);
         }
 
+
+        /* =========================
+           SECRET ENVELOPE
+           ========================= */
+
+        .secret-envelope {
+            display: none;
+            position: relative;
+            width: 230px;
+            height: 145px;
+            margin: 35px auto 20px;
+            perspective: 700px;
+        }
+
+        .secret-envelope.active {
+            display: block;
+            animation: envelopeAppear 0.8s ease forwards;
+        }
+
+        @keyframes envelopeAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        .envelope-back {
+            position: absolute;
+            inset: 0;
+            background: #5e1424;
+            border-radius: 5px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.45);
+        }
+
+        .envelope-front {
+            position: absolute;
+            inset: 0;
+            background: #7d1025;
+            clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+            border-radius: 5px;
+            z-index: 3;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #8e1930;
+            clip-path: polygon(0 0, 50% 58%, 100% 0);
+            transform-origin: top center;
+            transition: transform 1s ease;
+            z-index: 4;
+        }
+
+        .secret-envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+
+        .envelope-heart {
+            position: absolute;
+            z-index: 5;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -40%);
+            font-size: 25px;
+            transition: 0.5s ease;
+        }
+
+        .secret-envelope.open .envelope-heart {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+        }
+
+
+        /* =========================
+           SECRET NOTE
+           ========================= */
+
         .secret-note {
             display: none;
             max-width: 650px;
@@ -446,18 +596,25 @@
             border: 1px solid rgba(190, 50, 75, 0.35);
             border-radius: 18px;
             text-align: left;
-            animation: noteOpen 0.8s ease;
+        }
+
+        .secret-note.open {
+            display: block;
+            animation: noteOpen 1s ease;
         }
 
         @keyframes noteOpen {
+
             from {
                 opacity: 0;
-                transform: translateY(20px) scale(0.97);
+                transform: translateY(30px) scale(0.97);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
+
         }
 
         .secret-note-title {
@@ -465,6 +622,11 @@
             font-size: 30px;
             color: #d98a9a;
             margin-bottom: 20px;
+            opacity: 0;
+        }
+
+        .secret-note.open .secret-note-title {
+            animation: secretTextReveal 0.8s ease forwards 0.3s;
         }
 
         .secret-note p {
@@ -473,6 +635,62 @@
             line-height: 1.65;
             color: #dedede;
             margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .secret-note.open p {
+            animation: secretTextReveal 0.8s ease forwards;
+        }
+
+        .secret-note.open p:nth-of-type(1) {
+            animation-delay: 0.7s;
+        }
+
+        .secret-note.open p:nth-of-type(2) {
+            animation-delay: 1.15s;
+        }
+
+        .secret-note.open p:nth-of-type(3) {
+            animation-delay: 1.6s;
+        }
+
+        .secret-note.open p:nth-of-type(4) {
+            animation-delay: 2.05s;
+        }
+
+        .secret-note.open p:nth-of-type(5) {
+            animation-delay: 2.5s;
+        }
+
+        .secret-note.open p:nth-of-type(6) {
+            animation-delay: 2.95s;
+        }
+
+        .secret-note.open p:nth-of-type(7) {
+            animation-delay: 3.4s;
+        }
+
+        .secret-note.open p:nth-of-type(8) {
+            animation-delay: 3.85s;
+        }
+
+        .secret-note.open p:nth-of-type(9) {
+            animation-delay: 4.3s;
+        }
+
+        @keyframes secretTextReveal {
+
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
         }
 
 
@@ -531,7 +749,7 @@
 
 
         /* =========================
-           NEW PHOTOS FOR THE ENDING
+           NEW ENDING PHOTOS
            ========================= */
 
         .ending-photos {
@@ -567,14 +785,17 @@
         }
 
         @keyframes endingPhotoReveal {
+
             from {
                 opacity: 0;
                 transform: translateY(25px) scale(0.95);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
+
         }
 
         .ending-photo img {
@@ -637,14 +858,17 @@
         }
 
         @keyframes finalFade {
+
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
 
@@ -710,6 +934,8 @@
         }
 
 
+        /* SCROLLBAR */
+
         #letter::-webkit-scrollbar {
             width: 7px;
         }
@@ -724,7 +950,9 @@
         }
 
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+           ========================= */
 
         @media (max-width: 800px) {
 
@@ -762,6 +990,7 @@
             .ending-photo img {
                 height: 260px;
             }
+
         }
 
         @media (max-width: 600px) {
@@ -794,28 +1023,45 @@
             .final-ending {
                 padding-bottom: 80px;
             }
+
+            .secret-envelope {
+                width: 200px;
+                height: 125px;
+            }
+
         }
 
     </style>
 </head>
 
+
 <body>
 
+
     <div class="stars">
+
         <span class="star">✦</span>
         <span class="star">✧</span>
         <span class="star">✦</span>
         <span class="star">✧</span>
         <span class="star">✦</span>
         <span class="star">✧</span>
+
     </div>
 
+
+
+    <!-- =========================
+         OPENING
+         ========================= -->
 
     <main class="container" id="opening">
 
         <div class="opening">
 
-            <div class="tiny">for someone veryy special and important...</div>
+            <div class="tiny">
+                for someone veryy special and important...
+            </div>
 
             <h1>
                 Heyy theree,<br>
@@ -848,6 +1094,10 @@
     </main>
 
 
+
+    <!-- =========================
+         BIRTHDAY PAGE
+         ========================= -->
 
     <section id="birthday">
 
@@ -894,6 +1144,7 @@
         </div>
 
     </section>
+
 
 
     <!-- =========================
@@ -1042,6 +1293,11 @@
             </div>
 
 
+
+            <!-- =========================
+                 SECRET
+                 ========================= -->
+
             <div class="secret-area">
 
                 <div class="secret-teaser">
@@ -1051,6 +1307,22 @@
                 <button class="secret-button" onclick="openSecret()">
                     TAP TO OPEN 💌
                 </button>
+
+
+                <div class="secret-envelope" id="secretEnvelope">
+
+                    <div class="envelope-back"></div>
+
+                    <div class="envelope-flap"></div>
+
+                    <div class="envelope-front"></div>
+
+                    <div class="envelope-heart">
+                        💌
+                    </div>
+
+                </div>
+
 
                 <div class="secret-note" id="secretNote">
 
@@ -1133,7 +1405,10 @@
             </div>
 
 
-            <!-- THESE FOUR ARE ONLY IN THE LETTER -->
+
+            <!-- =========================
+                 FOUR PHOTO GALLERY
+                 ========================= -->
 
             <div class="photo-section">
 
@@ -1144,36 +1419,52 @@
                 <div class="photo-gallery">
 
                     <div class="photo-card">
+
                         <img src="final.png">
+
                         <div class="photo-caption">
                             the tiny Yaanu 🥹
                         </div>
+
                     </div>
 
+
                     <div class="photo-card">
+
                         <img src="next.png">
+
                         <div class="photo-caption">
                             growing up...
                         </div>
+
                     </div>
 
+
                     <div class="photo-card">
+
                         <img src="yeap.png">
+
                         <div class="photo-caption">
                             look at youuu 😭
                         </div>
+
                     </div>
 
+
                     <div class="photo-card">
+
                         <img src="yes.png">
+
                         <div class="photo-caption">
                             and nowww...
                         </div>
+
                     </div>
 
                 </div>
 
             </div>
+
 
 
             <!-- =========================
@@ -1191,7 +1482,7 @@
                 </div>
 
 
-                <!-- ADD YOUR 3 NEW PHOTOS HERE -->
+                <!-- THREE NEW PHOTOS -->
 
                 <div class="ending-photos">
 
@@ -1221,30 +1512,49 @@
     </section>
 
 
+
     <!-- =========================
          IMAGE LIGHTBOX
          ========================= -->
 
-    <div class="image-lightbox" id="imageLightbox" onclick="closeLightbox()">
+    <div class="image-lightbox"
+         id="imageLightbox"
+         onclick="closeLightbox()">
 
-        <button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox()">
+        <button class="lightbox-close"
+                onclick="event.stopPropagation(); closeLightbox()">
             ×
         </button>
 
-        <img id="lightboxImage" src="" alt="" onclick="event.stopPropagation()">
+        <img id="lightboxImage"
+             src=""
+             alt=""
+             onclick="event.stopPropagation()">
 
     </div>
 
 
+
     <script>
+
+
+        /* =========================
+           OPEN SURPRISE
+           ========================= */
 
         function openSurprise() {
 
             document.getElementById("opening").style.display = "none";
 
             document.getElementById("birthday").style.display = "flex";
+
         }
 
+
+
+        /* =========================
+           OPEN LETTER
+           ========================= */
 
         function openLetter() {
 
@@ -1252,34 +1562,60 @@
 
             document.getElementById("letter").style.display = "block";
 
-            window.scrollTo(0, 0);
+            document.getElementById("letter").scrollTop = 0;
 
             observeFinalEnding();
+
         }
 
 
+
+        /* =========================
+           SECRET NOTE
+           ========================= */
+
         function openSecret() {
 
-            const note = document.getElementById("secretNote");
             const button = document.querySelector(".secret-button");
+            const envelope = document.getElementById("secretEnvelope");
+            const note = document.getElementById("secretNote");
 
-            note.style.display = "block";
             button.style.display = "none";
 
+            envelope.classList.add("active");
+
             setTimeout(() => {
+
+                envelope.classList.add("open");
+
+            }, 700);
+
+
+            setTimeout(() => {
+
+                note.classList.add("open");
+
                 note.scrollIntoView({
                     behavior: "smooth",
                     block: "center"
                 });
-            }, 100);
+
+            }, 1700);
 
         }
 
+
+
+        /* =========================
+           NO BUTTON
+           ========================= */
 
         function nope() {
 
             alert("Nice try. 😭 You have to open it.");
+
         }
+
 
 
         /* =========================
@@ -1288,46 +1624,71 @@
 
         function openLightbox(src) {
 
-            const lightbox = document.getElementById("imageLightbox");
-            const lightboxImage = document.getElementById("lightboxImage");
+            const lightbox =
+                document.getElementById("imageLightbox");
+
+            const lightboxImage =
+                document.getElementById("lightboxImage");
 
             lightboxImage.src = src;
 
             lightbox.classList.add("active");
+
         }
 
 
         function closeLightbox() {
 
-            const lightbox = document.getElementById("imageLightbox");
-            const lightboxImage = document.getElementById("lightboxImage");
+            const lightbox =
+                document.getElementById("imageLightbox");
+
+            const lightboxImage =
+                document.getElementById("lightboxImage");
 
             lightbox.classList.remove("active");
 
             setTimeout(() => {
+
                 lightboxImage.src = "";
+
             }, 300);
+
         }
 
+
+
+        /* =========================
+           MAKE ALL PHOTOS CLICKABLE
+           ========================= */
 
         document.querySelectorAll(
             ".birthday-photo img, .photo-card img, .ending-photo img"
         ).forEach(img => {
 
             img.addEventListener("click", function () {
+
                 openLightbox(this.src);
+
             });
 
         });
 
 
+
+        /* =========================
+           ESCAPE TO CLOSE PHOTO
+           ========================= */
+
         document.addEventListener("keydown", function(event) {
 
             if (event.key === "Escape") {
+
                 closeLightbox();
+
             }
 
         });
+
 
 
         /* =========================
@@ -1342,30 +1703,36 @@
 
             finalEndingObserved = true;
 
-            const finalEnding = document.getElementById("finalEnding");
+            const finalEnding =
+                document.getElementById("finalEnding");
 
-            const observer = new IntersectionObserver(
-                entries => {
+            const observer =
+                new IntersectionObserver(
 
-                    entries.forEach(entry => {
+                    entries => {
 
-                        if (entry.isIntersecting) {
+                        entries.forEach(entry => {
 
-                            finalEnding.classList.add("revealed");
+                            if (entry.isIntersecting) {
 
-                            observer.disconnect();
+                                finalEnding.classList.add("revealed");
 
-                        }
+                                observer.disconnect();
 
-                    });
+                            }
 
-                },
-                {
-                    threshold: 0.25
-                }
-            );
+                        });
+
+                    },
+
+                    {
+                        threshold: 0.25
+                    }
+
+                );
 
             observer.observe(finalEnding);
+
         }
 
     </script>
