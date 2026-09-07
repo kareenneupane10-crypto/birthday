@@ -400,9 +400,10 @@
         }
 
         .letter-wrapper {
-            max-width: 780px;
+            max-width: 1180px;
             margin: auto;
             animation: letterReveal 1.3s ease;
+            position: relative;
         }
 
         @keyframes letterReveal {
@@ -439,11 +440,15 @@
         }
 
         .letter {
+            max-width: 780px;
+            margin: auto;
             font-family: 'Cormorant Garamond', serif;
             font-size: 22px;
             line-height: 1.65;
             color: #dedede;
             text-align: left;
+            position: relative;
+            z-index: 3;
         }
 
         .letter p {
@@ -461,10 +466,90 @@
 
 
 
+        /* NEW SIDE PHOTOS */
+
+        .side-memories {
+            position: absolute;
+            top: 260px;
+            left: 50%;
+            width: 1180px;
+            height: 100%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .side-photo {
+            position: absolute;
+            width: 145px;
+            height: 175px;
+            padding: 8px;
+            background: rgba(35, 8, 15, 0.8);
+            border: 1px solid rgba(190, 50, 75, 0.4);
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+            opacity: 0.92;
+            transition: 0.4s ease;
+            overflow: hidden;
+        }
+
+        .side-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 7px;
+            display: block;
+        }
+
+        .side-photo:hover {
+            transform: scale(1.05);
+            border-color: rgba(217, 138, 154, 0.8);
+        }
+
+        .side-left-1 {
+            left: 15px;
+            top: 30px;
+            transform: rotate(-7deg);
+        }
+
+        .side-right-1 {
+            right: 15px;
+            top: 80px;
+            transform: rotate(7deg);
+        }
+
+        .side-left-2 {
+            left: -5px;
+            top: 470px;
+            transform: rotate(6deg);
+        }
+
+        .side-right-2 {
+            right: -5px;
+            top: 620px;
+            transform: rotate(-6deg);
+        }
+
+        .side-left-3 {
+            left: 20px;
+            top: 1000px;
+            transform: rotate(-5deg);
+        }
+
+        .side-right-3 {
+            right: 20px;
+            top: 1160px;
+            transform: rotate(5deg);
+        }
+
+
+
         .secret-area {
             text-align: center;
             margin-top: 60px;
             padding-bottom: 80px;
+            position: relative;
+            z-index: 3;
         }
 
         .secret-teaser {
@@ -577,6 +662,8 @@
             border: 1px solid rgba(190, 50, 75, 0.35);
             border-radius: 18px;
             text-align: left;
+            position: relative;
+            z-index: 3;
         }
 
         .secret-note.open {
@@ -679,6 +766,8 @@
         .photo-section {
             margin-top: 60px;
             padding-bottom: 80px;
+            position: relative;
+            z-index: 3;
         }
 
         .photo-section-title {
@@ -789,6 +878,8 @@
             margin-top: 80px;
             padding: 90px 0 120px;
             border-top: 1px solid rgba(190, 50, 75, 0.18);
+            position: relative;
+            z-index: 3;
         }
 
         .final-ending-small,
@@ -977,6 +1068,16 @@
             border-radius: 10px;
         }
 
+
+
+
+        @media (max-width: 1200px) {
+
+            .side-memories {
+                display: none;
+            }
+
+        }
 
 
 
@@ -1182,6 +1283,41 @@
                 <h2>
                     For my <span class="cherry">Yaannuu.</span>
                 </h2>
+
+            </div>
+
+
+
+            <!-- NEW SIDE PHOTOS -->
+            <!-- Put side1.png, side2.png, side3.png,
+                 side4.png, side5.png and side6.png
+                 in the same folder as this HTML file. -->
+
+            <div class="side-memories">
+
+                <div class="side-photo side-left-1">
+                    <img src="side1.png">
+                </div>
+
+                <div class="side-photo side-right-1">
+                    <img src="side2.png">
+                </div>
+
+                <div class="side-photo side-left-2">
+                    <img src="side3.png">
+                </div>
+
+                <div class="side-photo side-right-2">
+                    <img src="side4.png">
+                </div>
+
+                <div class="side-photo side-left-3">
+                    <img src="side5.png">
+                </div>
+
+                <div class="side-photo side-right-3">
+                    <img src="side6.png">
+                </div>
 
             </div>
 
@@ -1652,7 +1788,7 @@
 
 
         document.querySelectorAll(
-            ".birthday-photo img, .photo-card img, .ending-photo img"
+            ".birthday-photo img, .photo-card img, .ending-photo img, .side-photo img"
         ).forEach(img => {
 
             img.addEventListener("click", function () {
